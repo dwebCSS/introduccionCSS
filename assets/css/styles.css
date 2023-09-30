@@ -1,0 +1,268 @@
+/* todo: Reglas CSS */
+
+/* * 1) Selector  */
+/* * 2) {propiedad: valor;} */
+
+/* 
+    * selector {
+    *   propiedad: valor;
+    * }
+*/
+
+/* ? Selectores Básicos */
+
+html {
+    margin: 0px;
+    padding: 0px;
+    background-color: #f0f0f0;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #FFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 16px;
+    color: red;
+}
+
+h1 {
+    color: blueviolet;
+    font-weight: bolder;
+    font-size: 32px;
+}
+
+h2 {
+    color: green;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+p {
+    color: brown;
+}
+
+/* ? Clases */
+
+.color-primary{
+    color: royalblue;
+}
+
+.txt-16 {
+    font-size: 16px;
+}
+
+/* ? Identificadores */
+
+#texto {
+    font-size: 20px;
+    background-color: gainsboro;
+}
+
+#texto {
+    color: #FFF;
+    background-color: red;
+    /* *CSS toma la última propiedad */
+    background-color: blueviolet;
+}
+
+#h1 {
+    color: red;
+}
+
+/* ? Atributos */
+
+
+a[target] {
+    text-decoration: none;
+}
+
+a[href*="http://"] {
+    color: red;
+}
+
+a[href*="https://"] {
+    color: green;
+}
+
+a[href$=".mx/"] {
+    font-style: italic;
+    color: lightseagreen;
+}
+
+/* ? Selectores Avanzados */
+
+/* 
+*   <padre>
+*       <hijos>
+*       <hijos>
+*       <hijos>
+*   </padre>
+*/
+
+.lista {
+    background-color: blueviolet;
+}
+
+/* * Hijos directos */
+
+.lista > li {
+    background-color: yellowgreen;
+}
+
+/* .lista li > span{
+    background-color: black;
+} */
+
+/* .lista > li > span {
+    background-color: red;
+} */
+
+span {
+    color: lightslategray;
+}
+
+/* * Hijos descendientes */
+
+.lista span {
+    background-color: aquamarine;
+    /* color: black; */
+}
+
+/* * Hermanos */
+
+/* 
+*   <...>
+*       <hermano>
+*       <hermano>
+*       <hermano>
+*   </...> 
+*/
+
+/* * "~" se aplica a los elementos hermanos que estén por debajo del elemento de la clase */
+
+.item ~ li {
+    background-color: blue;
+}
+
+/* * "+" se aplica al almento hermabo que esté por debajo de la clase */
+
+.item2 + li {
+    background-color: gold;
+}
+
+.item2 {
+    color: azure;
+}
+
+/* * Selectores Universales */
+
+* {
+    /* background-color: black; */
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.lista * {
+    color: darkcyan;
+}
+
+/* ? Pseudoclases */
+
+/* * Es una palabra clave que se añade a los selectores y que especifica un estado especial del elemento seleccionado */
+
+button {
+    background-color: #05c905;
+    color: #000;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 45px;
+}
+
+/* * :hover aplicará un estilo cuando el usuario coloque el cursos sobre el elemento*/
+
+button:hover {
+    background-color: blueviolet;
+    color: #FFF;
+    transition: .2s;
+}
+
+/* * :active comienza cuando el usuario presiona el botón primario del mouse y termina cuando se suelta */
+
+button:active {
+    background-color: black;
+    color: lightpink;
+}
+
+/* * :visited representa enlaces que el usuario ya ha visitado */
+
+a:visited {
+    color: darkgoldenrod;
+}
+
+/* * EJEMPLO 1: Pseudoclases | Clase padre */
+
+.padre {
+    padding: 0 50px;
+}
+
+.padre div:first-child {
+    color: red;
+}
+
+.padre div:last-child {
+    color: lightseagreen;
+}
+
+.padre div:nth-child(7) {
+    font-size: 25px;
+    padding-left: 20px;
+}
+
+/* * 1st, 2nd, 3rd, 4th, ..., nth */
+
+.padre div:nth-child(3n) {
+    text-decoration: line-through;
+}
+
+.padre div:nth-child(4n + 2) {
+    font-size: 30px;
+}
+
+.padre div:nth-child(even) {
+    background-color: gainsboro;
+}
+
+.padre div:nth-child(odd) {
+    background-color: antiquewhite;
+}
+
+/* * EJEMPLO 2: Pseudoclases | Clase father */
+
+.father * {
+    color: #000;
+    margin: 0;
+    padding: 0 50px;
+}
+
+.father p:first-of-type {
+    color: orangered;
+    padding-left: 70px;
+}
+
+.father span:last-of-type {
+    color: palevioletred;
+    padding-left: 85px;
+}
+
+.father div:nth-of-type(4) {
+    font-size: 36px;
+}
+
+.father *:not(div) {
+    background-color: gainsboro;
+}
