@@ -26,7 +26,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 26px;
     color: red;
 }
 
@@ -149,7 +149,7 @@ span {
     background-color: blue;
 }
 
-/* * "+" se aplica al almento hermabo que esté por debajo de la clase */
+/* * "+" se aplica al almento hermano que esté por debajo de la clase */
 
 .item2 + li {
     background-color: gold;
@@ -265,4 +265,252 @@ a:visited {
 
 .father *:not(div) {
     background-color: gainsboro;
+}
+
+/* ? Pseudoelementos */
+
+/* * Permiten añadir estilos a una concreta del documento */
+
+.copy {
+    color: #000;
+}
+
+/* * Antes */
+
+.copy::before{
+    content: "®";
+}
+
+/* * Después */
+
+a[target="_blank"]::after {
+    content: "↗";
+}
+
+.cuento::first-letter {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+    background-color: purple;
+    color:  beige;
+}
+
+.cuento::selection {
+    background-color: lightblue;
+    color: #000;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-button {
+    box-shadow: inset 0 0 6px darkblue;
+}
+
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px darkblue;
+}
+
+/* ? Agrupación de selectores */
+
+.button, .link {
+    background-color: white;
+    border: 1px solid #999;
+    padding: 10px 20px;
+}
+
+.button:hover, .link:hover {
+    background-color: blue;
+    color: azure;
+    transition: .5s;
+}
+
+.link {
+    text-decoration: none;
+    color: #000;
+    border: none;
+}
+
+/* ? Introducción a especificidad */
+
+.btn {
+    background-color: white;
+    border: 1px solid #999;
+    padding: 10px 20px;
+}
+
+.btn:hover {
+    background-color: blue;
+    color: azure;
+    transition: .5s;
+}
+
+/* 
+    * El algoritmo de CSS es la forma en que el navegador aplica los estilos al documento. 
+
+    *1) La Cascada
+    *2) La Especificidad
+    *3) La Herencia
+*/
+
+/* ? Cascada */
+
+/* 
+    * La cascada es el mecanismo en que el navegador aplica los estilos. Y toma en cuenta el siguiente orden: 
+
+    *1) Orden de aparación
+    * - El User Agent (los estilos por defecto del navegador)
+    * - Los estilos del autor
+
+    *2) La Especificidad del selector
+    
+*/
+
+a.color-black {
+    color: red;
+}
+
+.color-black {
+    color: black !important;
+}
+
+.h6 {
+    color: darkmagenta;
+    color: darkorange;
+    color: #000;
+}
+
+/* * La especificidad se calcula de la siguente forma: */
+
+/* 
+    * Etiquetas y pseudoelementos ------ 0, 0, 0, 1
+    * Clases, atributos y pseudoclases - 0, 0, 1, 0
+    * Identificadores ------------------ 0, 1, 0, 0
+    * Estilos en línea ----------------- 1, 0, 0, 0
+    ! !important rompe la especifidad
+*/
+
+/* ? Introducción a Herencia */
+
+/* * La Herencia, es la capacidad de un selector de obtener (heredar) los valores de sus ancestros más cercanos. Para aplicar se usa el valor inherit, si queremos evitarla podemos asignar otros valor o inicializar la propiedad en cuestión */
+
+.caja{
+    border: 1px solid;
+    width: 300px;
+    height: 200px;
+    font-size: 80px;
+}
+
+.titulo{
+    /* font-size: inherit; */
+    /* font-size: 14px; */
+    /* * "initial" deha el valor por defecto */
+    font-size: initial;
+    color: initial;
+    background-color: #d3d2d2;
+    /* * "inherit" forza alguna propiedad del padre */
+    height: inherit;
+}
+
+/* ? Modelo de Caja */
+
+/* 
+    * Es la forma en que CSS ve a los elementos HTML y los ve como si fueran cajas con las siguientes propiedades:
+
+    *1. Contenido (content)
+    *2. Relleno (padding)
+    *3. Borde (border)mor
+    *4. Margen (margin)
+*/
+
+.box {
+    padding: 20px;
+    border: 5px solid;
+    margin: 20px;
+    width: 300px;
+}
+
+.box1, .box2 {
+    font-size: 12px;
+    border: 2px solid;
+    padding: 20px;
+    margin: 10px 20px 50px 70px;
+    /* * top, right, bottom, left */
+    margin: 10px 10px 10px;
+    /* * top, x, bottom */
+    margin: 10px 10px;
+    /* * y, x */
+    margin: 10px;
+    /* * todas las direcciones */
+    margin-top: 40px;
+    margin-right: 100px;
+    margin-bottom: 200px;
+    margin-left: 40px;
+    margin: 20px 40px 20px;
+    width: 200px;
+}
+
+.box2 {
+    box-sizing: border-box;
+    box-sizing: content-box;
+}
+
+/* * content box: 200px + (20px * 2) + (2px * 2) */
+
+/* 
+    * border-box: 200px de ancho
+    *content: 200px - (20px * 2) - (2px * 2)
+    
+*/
+
+/* ? Cajas en bloque y en línea */
+
+.block,
+.inline,
+.inline-block {
+    border: 3px solid;
+    width: 300px;
+    height: 200px;
+    color: initial;
+}
+
+/* ? Cajas de bloque */
+
+/*
+    *- Ocupan todo el ancho disponible, lo que genera saltos de línea
+    *- Si puedes aplicarle un ancho y un alto
+    *- No permiten elementos a su lado
+    
+*/
+
+.block {
+    /* display: block; */
+    display: inline;
+    display: block;
+}
+
+/* ? Cajas en línea */
+
+/*
+    *- Ocupan el espacio necesario para mostrar su contenido
+    *- No permiten aplicarles un ancho y un alto
+    *- Permiten otros elementos a su lado
+*/
+
+.inline {
+    display: block;
+    display: inline;
+    /* padding: 20px; */
+    /* margin: 20px; */
+}
+
+.inline-block{
+    display: block;
+    display: inline;
+    display: inline-block;
 }
