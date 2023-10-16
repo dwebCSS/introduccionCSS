@@ -514,3 +514,163 @@ a.color-black {
     display: inline;
     display: inline-block;
 }
+
+/* ? Visibilidad de los elementos */
+
+.none,
+.hidden {
+    border: 3px solid;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    height: 200px;
+}
+
+.none {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.overflow {
+    padding: initial;
+    margin: initial;
+    width: inherit;
+    height: inherit;
+
+    /* overflow: hidden; */
+    /* overflow: scroll; */
+    /* overflow-x: none;
+    overflow-y: auto; */
+    overflow: auto;
+}
+
+/* ? Posicionamiento CSS */
+
+.nav {
+    border: 2px solid #999;
+    padding: 15px;
+    margin-top: 100px;
+    width: 300px;
+    height: 350px;
+}
+
+.nav section {
+    padding: 20px;
+    width: 250px;
+    background-color: lightblue;
+    height: 75px;
+    margin-bottom: 10px;
+}
+
+/* * La propiedad POSITION nos permite modificar la posición natural de cualquier elemento del documento HTML */
+
+/* ? Tipos de posicionamiento */
+
+.bloque {
+    border: 3px solid #d3d2d2;
+    padding: 5px;
+    margin: 2px;
+    width: 300px;
+    color: initial;
+}
+
+/* 
+* - Static
+* - Relative
+* - Absolute
+* - Fixed
+* - Sticky
+*/
+
+/* 
+* Para mover los elementos se activan las propiedades de TOP, BOTTOM, LEFT, RIGHT, Z-INDEX (profundidad) 
+
+! Estas propiedades no funcionan con el valor static (por defecto)
+*/
+
+/* ? Relative */
+
+/* * El elemento conserva sus dimensiones y posición original en el flujo del documento. */
+
+.relative {
+    border: 3px solid;
+    padding: 10px;
+    position: relative;
+    /* top: 100px; */
+    left: 0px;
+    /* right: 100px; */
+    /* width: 300px; */
+    bottom: 0px;
+}
+
+/* ? Absolute */
+
+/* * El elemento pierde sus dimensiones y posición original en el flujo del documento. Si se mueve pude tomar como referencia 2 elementos::after
+
+* 1) El primer ancestro con posicionamento relativo
+* 2) Si no encuentra un ancestro relativo, se mueve respecto del documento HTML
+
+*/
+
+.container {
+    border: 3px solid lightseagreen;
+    height: 300px;
+    position: relative;
+    top: 10px;
+}
+
+.absolute {
+    border: 3px solid lightpink;
+    padding: 10px;
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    bottom: 100px;
+    right: 50px;
+}
+
+/* ? Fixed */
+
+/* * El elemento pierde sus dimensiones y posición original en el flujo del documento. Si se mueve, toma como referencia el documento HTML y queda fijo en la posicion. Cuando el scroll se mueva el elemento no lo hará, se queda FIJO */
+
+.fixed{
+    border: 3px solid;
+    height: 40px;
+    padding-top: 8px;
+    background-color: #CCC;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+    /* bottom: 0px; */
+}
+
+.fixed h4 {
+    color: initial;
+}
+
+h1 {
+    margin-top: 45px;
+}
+
+/* ? Sticky */
+
+.sticky {
+    border: 3px solid plum;
+    background-color: #000;
+    color: plum;
+    padding: 10px;
+    position: sticky;
+    top: 40px;
+}
+
+.sticky2 {
+    border: 2px solid slateblue;
+    background-color: #000;
+    color: slateblue;
+    position: sticky;
+    bottom: 0;
+}
